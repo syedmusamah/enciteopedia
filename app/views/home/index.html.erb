@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EnCITEopedia</title>
+<%= stylesheet_link_tag '/stylesheets/depot.css', :media => :screen %>
+<%= stylesheet_link_tag    'scaffold', :media => :screen %> 
+<%= javascript_include_tag :defaults %>
+<%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= flash[:notice]%>
+
+<% if session[:remember_token] == nil%>
+<%= form_for(:session, :url => sessions_path) do |f| %>
+<%= f.label :email%>
+<%= f.text_field :email %>
+
+<%= f.label :password %>
+<%= f.password_field :password %>
+<%= f.submit "login" %>
+<%end%>
+<%end%>
+
+<h1><%= link_to 'Request to become editor', :controller => :veditors, :action => :index  %></h1>
+
+
+<table id="nqa">
+  <tr>
+    <th><%= sortable "aName" %></th>
+    <th><%= sortable "Category" %></th>
+    <th><%= sortable "hits" %></th>
+
+    
+    <th></th>
+    <th></th>
+  </tr>
+
+<h1> Top Articles <h1>
+
+<% @articles.limit(5).each do |article| %>
+  <tr>
+    <td><%= article.aName %></td>
+     <td><%= article.Category %></td>
+    <td><%= article.hits %></td>
+    <td><%= link_to 'Show', article %></td>
+    
+	
+<% if session[:remember_token] != nil%> 
+    <td><%= link_to 'Edit', edit_article_path(article) %></td>
+<% if session[:editor_id] == 11 %>
+    <td><%= button_to 'Destroy', article, confirm: 'Are you sure?', method: :delete %></td>
+<%end%>
+  <%end%>  
+  </tr>
+<% end %>
+</table>
+<br/>
+<br/>
+<br/>
+
+
+<h1><%= link_to 'Top Editors', :controller => :home, :action => :top  %></h1>
+
+<br/>
+<br/>
+<br/>
+
+
+<table>
+  <tr>
+    <th><%= sortable "aName" %></th>
+    <th><%= sortable "Category" %></th>
+    <th><%= sortable "hits" %></th>
+
+    
+    <th></th>
+    <th></th>
+  </tr>
+
+<h1> Your Edits <h1>
+
+<% @rarticles.each do |article| %>
+  <tr>
+    <td><%= article.aName %></td>
+     <td><%= article.Category %></td>
+    <td><%= article.hits %></td>
+    <td><%= link_to 'Show', article %></td>
+    
+	
+<% if session[:remember_token] != nil%> 
+    <td><%= link_to 'Edit', edit_article_path(article) %></td>
+<% if session[:editor_id] == 11 %>
+    <td><%= button_to 'Destroy', article, confirm: 'Are you sure?', method: :delete %></td>
+<%end%>
+  <%end%>  
+  </tr>
+<% end %>
+</table>
+
+
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EnCITEopedia</title>
+<%= stylesheet_link_tag '/stylesheets/depot.css', :media => :screen %>
+<%= stylesheet_link_tag    'scaffold', :media => :screen %> 
+<%= javascript_include_tag :defaults %>
+<%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= flash[:notice]%>
+
+<p>
+  <b>Aname:</b>
+  <%= @article.aName %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @article.content %>
+</p>
+
+<p>
+  <b>Hits:</b>
+  <%= @article.hits %>
+</p>
+
+
+<p>
+  <b>Picture:</b>
+  <%= image_tag(@article.avatar.url).html_safe %>
+</p>
+
+<table>
+  <tr>
+    <th> Editor Of Content</th>
+    <th>Edition Number</th>
+    <th>Updated Content</th>
+    
+
+    
+    <th></th>
+    <th></th>
+  </tr>
+
+<h1> Article History <h1>
+
+<% @history.each do |a| %>
+  <tr>
+    <td><%= Editor.find_by_id(a.editor_id).name %></td>
+     <td><%= a.id %></td>
+     <td><%= a.article_content %></td>
+
+
+    
+	
+
+<% if session[:remember_token] != nil%> 
+<td><%= link_to 'Thumbs Up', :controller => :editors, :action => :like %></td> |
+    <td><%= link_to 'Thumbs Down', :controller => :editors, :action => :unlike %></td> |
+<%end%>
+<%end%>
+<% if session[:remember_token] != nil%> 
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%end%>
+<%= link_to 'Back', articles_path %> |
+</table>
+</body>
+</html>

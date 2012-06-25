@@ -1,0 +1,17 @@
+<%= search_form_for @search do |f| %>
+
+  <%= f.label :Name %>
+  <%= f.text_field :aName_cont %>
+<br/>
+  <%= f.label :Category %>
+  <%= f.collection_select :Category_cont, Article.all, :id, :Category, :include_blank => true %>
+<br/>
+  <%= f.label :content_cont %>
+  <%= f.text_field :content_cont %>
+
+  <%= f.submit %>
+<% end %>
+
+<p>
+
+</p>

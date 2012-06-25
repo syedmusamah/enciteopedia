@@ -1,0 +1,32 @@
+body
+{	
+	background-color: #C68E17;
+ 	text-decoration:none;
+}
+
+.content
+{
+	
+}
+
+#links tr
+{
+	background-color:white;	
+	display:inline;
+	position:absolute;
+	
+	width:auto;
+	border-style: outset;
+	border-color: black;
+	
+}
+
+#links tr td
+{
+	
+	border:solid black;
+	width:14.8em;
+	background-color:#A52A2A;
+ 	text-align:center;
+	
+}

@@ -1,0 +1,22 @@
+<br />
+<br />
+<br />
+<br />
+<h1>Please enter the following information</h1>
+<%= form_for (@veditor) do |f| %>
+
+<%= f.label :name %><br/>
+<%= f.text_field :name %><br />
+
+<%= f.label :email%><br/>
+<%= f.text_field :email %><br />
+
+<%= f.label :password %><br/>
+<%= f.password_field :password %><br />
+
+<%= f.label :description %><br/>
+<%= f.text_area :p %><br />
+
+
+<%= f.submit "login" %>
+<% end %>

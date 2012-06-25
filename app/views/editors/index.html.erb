@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EnCITEopedia</title>
+<%= stylesheet_link_tag '/stylesheets/depot.css', :media => :screen %>
+<%= stylesheet_link_tag    'scaffold', :media => :screen %> 
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= flash[:notice]%>
+<table id="nqa">
+  <tr>
+    <th>Name</th>
+    <th>email</th>
+    <th>Thumbs<th/>
+    
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @editors.each do |editor| %>
+  <tr>
+
+    <td><%= editor.name %></td>
+     <td><%= editor.email %></td>
+     <td><%= editor.plusminus %></td>
+     
+
+<td><%= link_to 'Show', editor %></td>
+<% if session[:remember_token] != nil%> 
+   
+
+<td><%= link_to 'Edit', edit_editor_path(editor) %></td>
+<% if session[:editor_id] == 11 %>
+    
+    <td><%= button_to 'Destroy', editor, confirm: 'Are you sure?', method: :delete %></td>
+<% end %>
+<% end %>
+  </tr>
+
+<% end %>
+</table>
+
+
+</body>
+</html>

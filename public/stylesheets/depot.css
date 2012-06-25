@@ -1,0 +1,25 @@
+body
+{
+	color: #8F3926;
+}
+
+
+
+#nq tr{
+	border:solid black;
+	display:inline;
+	width:auto;
+	border-style: outset;
+	border-color: black;
+}
+
+#nq tr td
+{
+	padding-left:2em;
+	padding-right:2em;
+	border:solid black;
+	background-color:#99CCFF;
+	
+}
+
+#nq tr #c{width:400px;} // not working

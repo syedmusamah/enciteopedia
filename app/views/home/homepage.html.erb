@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EnCITEopedia</title>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<table id="nq">
+  <tr>
+    <th>Article Name</th>
+    <th>Content</th>
+    <th>Hits</th>
+    <th>Images</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @articles.each do |article| %>
+  <tr>
+    <td><%= article.aName %></td>
+    <td><%= article.content %></td>
+    <td><%= article.hits %></td>
+<td><%= article.images %></td>
+    <td><%= link_to 'Show', question %></td>
+    <td><%= link_to 'Edit', edit_question_path(question) %></td>
+    <td><%= button_to 'Destroy', question, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+
+</table>
+
+
+
+
+</body>
+
+</html>

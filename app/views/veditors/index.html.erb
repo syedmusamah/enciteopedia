@@ -1,0 +1,33 @@
+<h1>Listing veditors</h1>
+<%= flash[:notice]%>
+<table>
+  <tr>
+    <th>name</th>
+    <th>email</th>
+    <th>net vote count</th>
+  </tr>
+
+<% @veditors.each do |veditor| %>
+  <tr>
+
+ <td><%= veditor.name %></td>
+     <td><%= veditor.email %></td>
+<td><%= veditor.plusminus %></td>
+    <td><%= link_to 'Show', veditor, :vid=>veditor.id %></td>
+    <td><%= link_to 'Edit', edit_veditor_path(veditor) %></td>
+    
+<% if session[:editor_id] == 11 %>
+    <td><%= button_to 'Destroy', veditor, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= button_to 'Approve', :controller => :veditors, :action => :approve, :vid=>veditor.id%></td>
+
+<%end%>
+<td><%= link_to 'Thumbs Up', :controller => :veditors, :action => :like, :vid => veditor.id %></td> |
+    <td><%= link_to 'Thumbs Down', :controller => :veditors, :action => :unlike , :vid => veditor.id %></td> |
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Veditor', new_veditor_path %>

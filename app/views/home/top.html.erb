@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<table id="nqa">
+  <tr>
+    <th>Name</th>
+    <th>Thumbs<th/>
+    
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @items.each do |editor| %>
+  <tr>
+	<td><%= editor.name %></td>
+     <td><%= editor.plusminus %></td>
+<%end%>
+
+</body>
+</html>

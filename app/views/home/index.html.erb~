@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EnCITEopedia</title>
+<%= stylesheet_link_tag '/stylesheets/depot.css', :media => :screen %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<img src="http://www.w3schools.com/images/lamp.gif" alt="Lamp" width="15" height="15" />
+<%= image_tag "ra.gif" %>
+
+<% @articles.each do |article| %>
+  <p> Name<%= article.aName %></p>
+     <p> Category<%= article.Category %></p>
+    <p> Content:<%= article.content %></p>
+    <p> Hits <%= article.hits %></p>
+   <%= image_tag (article.avatar)%> 
+    <p><%= link_to 'Show', article %></p>
+    <p><%= link_to 'Edit', edit_article_path(article) %></p>
+    <p><%= button_to 'Destroy', article, confirm: 'Are you sure?', method: :delete %></p>
+
+<% end %>
+
+
+<br />
+
+<%= link_to 'New Article', new_article_path %>
+
+</body>
+</html>
